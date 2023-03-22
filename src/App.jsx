@@ -8,23 +8,22 @@ import './scss/app.scss';
 
 function App() {
   return (
-    <div class="wrapper">
+    <div className="wrapper">
       <Header />
 
-      <div class="content">
-        <div class="container">
-          <div class="content__top">
+      <div className="content">
+        <div className="container">
+          <div className="content__top">
             <Categories />
 
             <Sort />
           </div>
 
-          <h2 class="content__title">Все пиццы</h2>
+          <h2 className="content__title">Все пиццы</h2>
 
-          <div class="content__items">
+          <div className="content__items">
             <PizzaBlock title="Mexicano" price={425} />
             <PizzaBlock title="Quatro formagio" price={599} />
-            <PizzaBlock title="Four meat" price={555} />
           </div>
         </div>
       </div>
