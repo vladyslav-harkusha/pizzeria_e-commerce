@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/vladyslav-harkusha/pizzeria_e-commerce/static/css/main.dcdbcd39.css",
+    "main.js": "/vladyslav-harkusha/pizzeria_e-commerce/static/js/main.955165c4.js",
+    "index.html": "/vladyslav-harkusha/pizzeria_e-commerce/index.html",
+    "main.dcdbcd39.css.map": "/vladyslav-harkusha/pizzeria_e-commerce/static/css/main.dcdbcd39.css.map",
+    "main.955165c4.js.map": "/vladyslav-harkusha/pizzeria_e-commerce/static/js/main.955165c4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.dcdbcd39.css",
+    "static/js/main.955165c4.js"
+  ]
+}
