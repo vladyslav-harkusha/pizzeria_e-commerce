@@ -1,7 +1,7 @@
 {
   "name": "pizzeria_e-commerce",
   "version": "0.1.0",
-  "homepage": "https://github.com/vladyslav-harkusha/pizzeria_e-commerce",
+  "homepage": "https://vladyslav-harkusha.github.io/pizzeria_e-commerce/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
