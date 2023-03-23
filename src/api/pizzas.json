@@ -12,7 +12,7 @@
       30,
       40
     ],
-    "price": 803,
+    "price": 8.03,
     "category": 0,
     "rating": 4
   },
@@ -27,7 +27,7 @@
       26,
       40
     ],
-    "price": 245,
+    "price": 2.45,
     "category": 0,
     "rating": 6
   },
@@ -42,7 +42,7 @@
       26,
       40
     ],
-    "price": 295,
+    "price": 2.95,
     "category": 1,
     "rating": 4
   },
@@ -58,7 +58,7 @@
       30,
       40
     ],
-    "price": 275,
+    "price": 2.75,
     "category": 2,
     "rating": 2
   },
@@ -75,7 +75,7 @@
       30,
       40
     ],
-    "price": 415,
+    "price": 4.15,
     "category": 3,
     "rating": 8
   },
@@ -90,7 +90,7 @@
       30,
       40
     ],
-    "price": 580,
+    "price": 5.80,
     "category": 2,
     "rating": 2
   },
@@ -107,7 +107,7 @@
       30,
       40
     ],
-    "price": 675,
+    "price": 6.75,
     "category": 1,
     "rating": 9
   },
@@ -124,7 +124,7 @@
       30,
       40
     ],
-    "price": 450,
+    "price": 4.50,
     "category": 4,
     "rating": 10
   },
@@ -141,7 +141,7 @@
       30,
       40
     ],
-    "price": 395,
+    "price": 3.95,
     "category": 5,
     "rating": 10
   },
@@ -158,7 +158,7 @@
       30,
       40
     ],
-    "price": 285,
+    "price": 2.85,
     "category": 5,
     "rating": 7
   }
