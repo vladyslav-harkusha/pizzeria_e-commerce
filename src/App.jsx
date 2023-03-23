@@ -4,6 +4,8 @@ import { Categories } from './components/Categories';
 import { Header } from './components/Header';
 import { PizzaBlock } from './components/PizzaBlock';
 import { Sort } from './components/Sort';
+
+import pizzasFromJSON from './api/pizzas.json'
 import './scss/app.scss';
 
 function App() {
@@ -19,11 +21,12 @@ function App() {
             <Sort />
           </div>
 
-          <h2 className="content__title">Все пиццы</h2>
+          <h2 className="content__title">All pizzas</h2>
 
           <div className="content__items">
-            <PizzaBlock title="Mexicano" price={425} />
-            <PizzaBlock title="Quatro formagio" price={599} />
+            {pizzasFromJSON.map(pizza => (
+              <PizzaBlock key={pizza.id} pizza={pizza} />
+            ))}
           </div>
         </div>
       </div>
