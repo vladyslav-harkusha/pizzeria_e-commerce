@@ -76,7 +76,7 @@ export const PizzaBlock = ({ pizza }) => {
               fill="white"
             />
           </svg>
-          <span>Add to cart</span>
+          <span>to cart</span>
           <i>{pizzaCount}</i>
         </button>
       </div>
