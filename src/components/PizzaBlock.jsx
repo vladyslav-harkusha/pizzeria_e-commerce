@@ -38,7 +38,7 @@ export const PizzaBlock = ({ pizza }) => {
         <ul>
           {types.map((typeId, i) => (
             <li
-              key={i}
+              key={typeId}
               className={i === activeTypeIndex ? 'active' : ''}
               onClick={() => pizzaTypeHandler(i)}
             >
@@ -49,7 +49,7 @@ export const PizzaBlock = ({ pizza }) => {
         <ul>
           {sizes.map((size, i) => (
             <li
-              key={i}
+              key={size}
               className={i === activeSizeIndex ? 'active' : ''}
               onClick={() => pizzaSizeHandler(i)}
             >

@@ -1,6 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
+
+const popupItems = ['rating', 'price', 'alfabet'];
 
 export const Sort = () => {
+  const [isPopupVisible, setIsPopupVisible] = useState(false);
+  const [selectedItemIndex, setSelectedItemIndex] = useState(0);
+
+  const popupHandler = () => {
+    setIsPopupVisible((curr) => !curr);
+  };
+
+  const selectItemHandler = (newIndex) => {
+    if (newIndex !== selectedItemIndex) {
+      setSelectedItemIndex(newIndex);
+    }
+    
+    setIsPopupVisible(false);
+  };
+
   return (
     <div className="sort">
       <div className="sort__label">
@@ -16,16 +33,25 @@ export const Sort = () => {
             fill="#2C2C2C"
           />
         </svg>
-        <b>Сортировка по:</b>
-        <span>популярности</span>
+        <b>Sort by:</b>
+        <span onClick={popupHandler}>{popupItems[selectedItemIndex]}</span>
       </div>
-      <div className="sort__popup">
-        <ul>
-          <li className="active">популярности</li>
-          <li>цене</li>
-          <li>алфавиту</li>
-        </ul>
-      </div>
+
+      {isPopupVisible && (
+        <div className="sort__popup">
+          <ul>
+            {popupItems.map((item, i) => (
+              <li
+                key={i}
+                className={i === selectedItemIndex ? 'active' : ''}
+                onClick={() => selectItemHandler(i)}
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 };
