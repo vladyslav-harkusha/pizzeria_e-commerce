@@ -11,7 +11,7 @@ export const Header = () => {
           <div className="header__logo">
             <img width="38" src={logoSvg} alt="Pizza logo" />
             <div>
-              <h1>React Pizza</h1>
+              <h1>Pizzeria</h1>
               <p>the best pizza in the world</p>
             </div>
           </div>

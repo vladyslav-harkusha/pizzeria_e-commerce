@@ -22,23 +22,24 @@ export const Home = () => {
 
   useEffect(() => {
     getAllPizzas();
+
+    window.scrollTo(0, 0);
   }, [])
 
   return (
-    <>
+    <div className="container">
       <div className="content__top">
         <Categories />
         <Sort />
       </div>
 
       <h2 className="content__title">All pizzas</h2>
-
       <div className="content__items">
         {isLoading
           ? [...new Array(10)].map((_, i) => <PizzaBlockSkeleton key={i} />)
           : pizzas.map(pizza => <PizzaBlock key={pizza.id} pizza={pizza} />)
         }
       </div>
-    </>
+    </div>
   );
 };
