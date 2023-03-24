@@ -1,0 +1,1 @@
+export const pizzaCategories = ['All', 'Meat', 'Vegetarian', 'Grilled', 'Spicy', 'Mixed'];

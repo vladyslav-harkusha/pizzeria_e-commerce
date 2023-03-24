@@ -1,18 +1,17 @@
 import React, { useState } from 'react';
 
-const popupItems = ['rating', 'price', 'alfabet'];
+import { pizzaSortType } from '../constants/pizzaSortType';
 
-export const Sort = () => {
+export const Sort = ({ sortByIndex, updateSortIndex }) => {
   const [isPopupVisible, setIsPopupVisible] = useState(false);
-  const [selectedItemIndex, setSelectedItemIndex] = useState(0);
 
   const popupHandler = () => {
     setIsPopupVisible((curr) => !curr);
   };
 
   const selectItemHandler = (newIndex) => {
-    if (newIndex !== selectedItemIndex) {
-      setSelectedItemIndex(newIndex);
+    if (newIndex !== sortByIndex) {
+      updateSortIndex(newIndex);
     }
     
     setIsPopupVisible(false);
@@ -34,16 +33,16 @@ export const Sort = () => {
           />
         </svg>
         <b>Sort by:</b>
-        <span onClick={popupHandler}>{popupItems[selectedItemIndex]}</span>
+        <span onClick={popupHandler}>{pizzaSortType[sortByIndex]}</span>
       </div>
 
       {isPopupVisible && (
         <div className="sort__popup">
           <ul>
-            {popupItems.map((item, i) => (
+            {pizzaSortType.map((item, i) => (
               <li
                 key={i}
-                className={i === selectedItemIndex ? 'active' : ''}
+                className={i === sortByIndex ? 'active' : ''}
                 onClick={() => selectItemHandler(i)}
               >
                 {item}

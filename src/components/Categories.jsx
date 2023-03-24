@@ -1,24 +1,22 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-const categories = ['All', 'Meat', 'Vegetarian', 'Grilled', 'Spicy', 'Closed'];
+import { pizzaCategories } from '../constants/pizzaCategories';
 
-export const Categories = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-
+export const Categories = ({ categoryIndex, updateCategoryIndex }) => {
   const changeCategoryHandler = (newIndex) => {
-    if (newIndex === activeIndex) {
+    if (newIndex === categoryIndex) {
       return;
     }
-    setActiveIndex(newIndex);
+    updateCategoryIndex(newIndex);
   };
 
   return (
     <div className="categories">
       <ul>
-        {categories.map((category, i) => (
+        {pizzaCategories.map((category, i) => (
           <li
             key={i}
-            className={i === activeIndex ? 'active' : ''}
+            className={i === categoryIndex ? 'active' : ''}
             onClick={() => changeCategoryHandler(i)}
           >
             {category}
