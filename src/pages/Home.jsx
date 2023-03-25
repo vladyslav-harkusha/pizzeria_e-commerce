@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Categories } from '../components/Categories';
 import { PizzaBlock } from '../components/PizzaBlock';
 import { PizzaBlockSkeleton } from '../components/PizzaBlock/Skeleton';
+import { Search } from '../components/Search';
 import { Sort } from '../components/Sort';
 
 import { pizzaCategories } from '../constants/pizzaCategories';
