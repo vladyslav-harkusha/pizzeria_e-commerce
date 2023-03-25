@@ -1,0 +1,27 @@
+.root {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+
+  :global {
+    .previous,
+    .next {
+      color: #fe5f1e;
+    }
+
+    .selected {
+      background-color: #fe5f1e;
+    }
+  }
+
+  li {
+    padding: 10px;
+    border: 1px solid #fe5f1e;
+    border-radius: 30px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #fe5f1e;
+    }
+  }
+}

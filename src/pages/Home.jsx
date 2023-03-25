@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 
 import { Categories } from '../components/Categories';
+import { Pagination } from '../components/Pagination';
 import { PizzaBlock } from '../components/PizzaBlock';
 import { PizzaBlockSkeleton } from '../components/PizzaBlock/Skeleton';
-import { Search } from '../components/Search';
 import { Sort } from '../components/Sort';
 
 import { pizzaCategories } from '../constants/pizzaCategories';
 import { pizzaSortType } from '../constants/pizzaSortType';
 
 const getQueryParams = (catInd, sortInd) => {
-  let params = '?';
+  let params = '';
   if (catInd) {
     params += `&category=${catInd}`;
   }
@@ -25,8 +25,9 @@ export const Home = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [categoryIndex, setCategoryIndex] = useState(0);
   const [sortByIndex, setSortByIndex] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
 
-  const BASE_URL = 'https://641c394db556e431a868cc43.mockapi.io/pizzas';
+  const BASE_URL = `https://641c394db556e431a868cc43.mockapi.io/pizzas?page=${currentPage}&limit=4`;
   const queryParams = getQueryParams(categoryIndex, sortByIndex);
 
   const getAllPizzas = async () => {
@@ -41,7 +42,7 @@ export const Home = () => {
   useEffect(() => {
     getAllPizzas();
     window.scrollTo(0, 0);
-  }, [categoryIndex, sortByIndex]);
+  }, [categoryIndex, sortByIndex, currentPage]);
 
   const updateCategoryIndex = (index) => setCategoryIndex(index);
   const updateSortIndex = (index) => setSortByIndex(index);
@@ -60,6 +61,8 @@ export const Home = () => {
           : pizzas.map(pizza => <PizzaBlock key={pizza.id} pizza={pizza} />)
         }
       </div>
+
+      <Pagination onChangePage={number => setCurrentPage(number)} />
     </div>
   );
 };
