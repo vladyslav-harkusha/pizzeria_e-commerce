@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/pizzeria_e-commerce/static/css/main.62afe8a5.css",
-    "main.js": "/pizzeria_e-commerce/static/js/main.30f07eae.js",
+    "main.css": "/pizzeria_e-commerce/static/css/main.cbea751b.css",
+    "main.js": "/pizzeria_e-commerce/static/js/main.bba4e2b2.js",
     "static/media/pizza-logo.svg": "/pizzeria_e-commerce/static/media/pizza-logo.56ac87032d8f6fdf863326acd06c0d97.svg",
     "index.html": "/pizzeria_e-commerce/index.html",
-    "main.62afe8a5.css.map": "/pizzeria_e-commerce/static/css/main.62afe8a5.css.map",
-    "main.30f07eae.js.map": "/pizzeria_e-commerce/static/js/main.30f07eae.js.map"
+    "main.cbea751b.css.map": "/pizzeria_e-commerce/static/css/main.cbea751b.css.map",
+    "main.bba4e2b2.js.map": "/pizzeria_e-commerce/static/js/main.bba4e2b2.js.map"
   },
   "entrypoints": [
-    "static/css/main.62afe8a5.css",
-    "static/js/main.30f07eae.js"
+    "static/css/main.cbea751b.css",
+    "static/js/main.bba4e2b2.js"
   ]
 }
