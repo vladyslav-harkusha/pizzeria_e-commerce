@@ -1,21 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 
 import { Categories } from '../components/Categories';
-import { Pagination } from '../components/Pagination';
 import { PizzaBlock } from '../components/PizzaBlock';
 import { PizzaBlockSkeleton } from '../components/PizzaBlock/Skeleton';
 import { Sort } from '../components/Sort';
 
 import { pizzaCategories } from '../constants/pizzaCategories';
 import { pizzaSortType } from '../constants/pizzaSortType';
+import { SearchValueContext } from '../context/searchValueContext';
 
-const getQueryParams = (catInd, sortInd) => {
+const getQueryParams = (catInd, sortInd, searchValue) => {
   let params = '';
   if (catInd) {
     params += `&category=${catInd}`;
   }
   if (sortInd) {
     params += `&sortBy=${pizzaSortType[sortInd]}`;
+  }
+  if (searchValue) {
+    params += `&search=${searchValue}`;
   }
   return params;
 };
@@ -25,10 +28,10 @@ export const Home = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [categoryIndex, setCategoryIndex] = useState(0);
   const [sortByIndex, setSortByIndex] = useState(0);
-  const [currentPage, setCurrentPage] = useState(1);
+  const { searchValue } = useContext(SearchValueContext)
 
-  const BASE_URL = `https://641c394db556e431a868cc43.mockapi.io/pizzas?page=${currentPage}&limit=4`;
-  const queryParams = getQueryParams(categoryIndex, sortByIndex);
+  const BASE_URL = `https://641c394db556e431a868cc43.mockapi.io/pizzas?`;
+  const queryParams = getQueryParams(categoryIndex, sortByIndex, searchValue);
 
   const getAllPizzas = async () => {
     setIsLoading(true);
@@ -42,7 +45,7 @@ export const Home = () => {
   useEffect(() => {
     getAllPizzas();
     window.scrollTo(0, 0);
-  }, [categoryIndex, sortByIndex, currentPage]);
+  }, [categoryIndex, sortByIndex, searchValue]);
 
   const updateCategoryIndex = (index) => setCategoryIndex(index);
   const updateSortIndex = (index) => setSortByIndex(index);
@@ -61,8 +64,6 @@ export const Home = () => {
           : pizzas.map(pizza => <PizzaBlock key={pizza.id} pizza={pizza} />)
         }
       </div>
-
-      <Pagination onChangePage={number => setCurrentPage(number)} />
     </div>
   );
 };
