@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
+import { setSortByIndex } from '../redux/slices/filterSlice';
 import { pizzaSortType } from '../constants/pizzaSortType';
 
-export const Sort = ({ sortByIndex, updateSortIndex }) => {
+export const Sort = () => {
   const [isPopupVisible, setIsPopupVisible] = useState(false);
+  const dispatch = useDispatch();
+  const sortByIndex = useSelector(state => state.filterSlice.sortByIndex);
+
+  const updateSortIndex = (index) => dispatch(setSortByIndex(index));
 
   const popupHandler = () => {
     setIsPopupVisible((curr) => !curr);

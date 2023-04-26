@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { useSelector } from 'react-redux';
 
 import { Categories } from '../components/Categories';
 import { PizzaBlock } from '../components/PizzaBlock';
@@ -26,9 +27,10 @@ const getQueryParams = (catInd, sortInd, searchValue) => {
 export const Home = () => {
   const [pizzas, setPizzas] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [categoryIndex, setCategoryIndex] = useState(0);
-  const [sortByIndex, setSortByIndex] = useState(0);
-  const { searchValue } = useContext(SearchValueContext)
+
+  const categoryIndex = useSelector(state => state.filterSlice.categoryId);
+  const sortByIndex = useSelector(state => state.filterSlice.sortByIndex);
+  const { searchValue } = useContext(SearchValueContext);
 
   const BASE_URL = `https://641c394db556e431a868cc43.mockapi.io/pizzas?`;
   const queryParams = getQueryParams(categoryIndex, sortByIndex, searchValue);
@@ -47,14 +49,11 @@ export const Home = () => {
     window.scrollTo(0, 0);
   }, [categoryIndex, sortByIndex, searchValue]);
 
-  const updateCategoryIndex = (index) => setCategoryIndex(index);
-  const updateSortIndex = (index) => setSortByIndex(index);
-
   return (
     <div className="container">
       <div className="content__top">
-        <Categories categoryIndex={categoryIndex} updateCategoryIndex={updateCategoryIndex} />
-        <Sort sortByIndex={sortByIndex} updateSortIndex={updateSortIndex} />
+        <Categories />
+        <Sort />
       </div>
 
       <h2 className="content__title">{`${pizzaCategories[categoryIndex]} pizzas`}</h2>
