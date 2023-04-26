@@ -28,12 +28,11 @@ export const Home = () => {
   const [pizzas, setPizzas] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const categoryIndex = useSelector(state => state.filterSlice.categoryId);
-  const sortByIndex = useSelector(state => state.filterSlice.sortByIndex);
+  const { categoryId, sortByIndex } = useSelector(state => state.filterSlice);
   const { searchValue } = useContext(SearchValueContext);
 
   const BASE_URL = `https://641c394db556e431a868cc43.mockapi.io/pizzas?`;
-  const queryParams = getQueryParams(categoryIndex, sortByIndex, searchValue);
+  const queryParams = getQueryParams(categoryId, sortByIndex, searchValue);
 
   const getAllPizzas = async () => {
     setIsLoading(true);
@@ -47,7 +46,7 @@ export const Home = () => {
   useEffect(() => {
     getAllPizzas();
     window.scrollTo(0, 0);
-  }, [categoryIndex, sortByIndex, searchValue]);
+  }, [categoryId, sortByIndex, searchValue]);
 
   return (
     <div className="container">
@@ -56,7 +55,7 @@ export const Home = () => {
         <Sort />
       </div>
 
-      <h2 className="content__title">{`${pizzaCategories[categoryIndex]} pizzas`}</h2>
+      <h2 className="content__title">{`${pizzaCategories[categoryId]} pizzas`}</h2>
       <div className="content__items">
         {isLoading
           ? [...new Array(10)].map((_, i) => <PizzaBlockSkeleton key={i} />)
