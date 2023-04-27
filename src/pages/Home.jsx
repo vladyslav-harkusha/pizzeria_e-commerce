@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
+import axios from 'axios';
 import { useSelector } from 'react-redux';
 
 import { Categories } from '../components/Categories';
@@ -36,10 +37,9 @@ export const Home = () => {
 
   const getAllPizzas = async () => {
     setIsLoading(true);
-    const response = await fetch(BASE_URL + queryParams);
-    const pizzasFromServer = await response.json();
+    const response = await axios.get(BASE_URL + queryParams);
 
-    setPizzas(pizzasFromServer);
+    setPizzas(response.data);
     setIsLoading(false);
   };
 
