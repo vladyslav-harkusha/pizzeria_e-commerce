@@ -1,15 +1,17 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { Categories } from '../components/Categories';
 import { PizzaBlock } from '../components/PizzaBlock';
 import { PizzaBlockSkeleton } from '../components/PizzaBlock/Skeleton';
 import { Sort } from '../components/Sort';
+import { Pagination } from '../components/Pagination/Pagination';
 
 import { pizzaCategories } from '../constants/pizzaCategories';
 import { pizzaSortType } from '../constants/pizzaSortType';
 import { SearchValueContext } from '../context/searchValueContext';
+import { setCurrentPage } from '../redux/slices/filterSlice';
 
 const getQueryParams = (catInd, sortInd, searchValue) => {
   let params = '';
@@ -29,7 +31,8 @@ export const Home = () => {
   const [pizzas, setPizzas] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const { categoryId, sortByIndex } = useSelector(state => state.filterSlice);
+  const dispatch = useDispatch();
+  const { categoryId, sortByIndex, currentPage } = useSelector(state => state.filterSlice);
   const { searchValue } = useContext(SearchValueContext);
 
   const BASE_URL = `https://641c394db556e431a868cc43.mockapi.io/pizzas?`;
@@ -46,7 +49,11 @@ export const Home = () => {
   useEffect(() => {
     getAllPizzas();
     window.scrollTo(0, 0);
-  }, [categoryId, sortByIndex, searchValue]);
+  }, [categoryId, sortByIndex, searchValue, currentPage]);
+
+  const onChangePage = (newPage) => {
+    dispatch(setCurrentPage(newPage))
+  };
 
   return (
     <div className="container">
@@ -62,6 +69,13 @@ export const Home = () => {
           : pizzas.map(pizza => <PizzaBlock key={pizza.id} pizza={pizza} />)
         }
       </div>
+
+      <Pagination
+        totalItems={10}
+        perPage={8}
+        currentPage={currentPage}
+        onChangePage={onChangePage}
+      />
     </div>
   );
 };
