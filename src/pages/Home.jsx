@@ -13,8 +13,8 @@ import { pizzaSortType } from '../constants/pizzaSortType';
 import { SearchValueContext } from '../context/searchValueContext';
 import { setCurrentPage } from '../redux/slices/filterSlice';
 
-const getQueryParams = (catInd, sortInd, searchValue) => {
-  let params = '';
+const getQueryParams = (page, catInd, sortInd, searchValue) => {
+  let params = `?page=${page}&limit=8`;
   if (catInd) {
     params += `&category=${catInd}`;
   }
@@ -35,8 +35,8 @@ export const Home = () => {
   const { categoryId, sortByIndex, currentPage } = useSelector(state => state.filterSlice);
   const { searchValue } = useContext(SearchValueContext);
 
-  const BASE_URL = `https://641c394db556e431a868cc43.mockapi.io/pizzas?`;
-  const queryParams = getQueryParams(categoryId, sortByIndex, searchValue);
+  const BASE_URL = `https://641c394db556e431a868cc43.mockapi.io/pizzas`;
+  const queryParams = getQueryParams(currentPage, categoryId, sortByIndex, searchValue);
 
   const getAllPizzas = async () => {
     setIsLoading(true);
@@ -52,8 +52,10 @@ export const Home = () => {
   }, [categoryId, sortByIndex, searchValue, currentPage]);
 
   const onChangePage = (newPage) => {
-    dispatch(setCurrentPage(newPage))
+    dispatch(setCurrentPage(newPage));
   };
+
+  console.log(queryParams);
 
   return (
     <div className="container">

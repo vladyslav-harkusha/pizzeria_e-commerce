@@ -29,9 +29,9 @@ export const Pagination = ({
   const pages = getPages(1, totalPages)
 
   return (
-    <ul className={styles.root}>
+    <ul className={styles.pageList}>
       <li
-        className={cn('page-item', { disabled: currentPage === 1 })}
+        className={cn([styles.pageItem], { [styles.disabled]: currentPage === 1 })}
         onClick={handlePrev}
       >
         «
@@ -39,7 +39,7 @@ export const Pagination = ({
 
       {pages.map(pageNumber => (
         <li
-          className={cn('page-item', { active: pageNumber === currentPage })}
+          className={cn([styles.pageItem], { [styles.active]: pageNumber === currentPage })}
           key={pageNumber}
           onClick={() => onChangePage(pageNumber)}
         >
@@ -48,7 +48,7 @@ export const Pagination = ({
       ))}
 
       <li
-        className={cn('page-item', { disabled: currentPage === totalPages })}
+        className={cn([styles.pageItem], { [styles.disabled]: currentPage === totalPages })}
         onClick={handleNext}
       >
         »

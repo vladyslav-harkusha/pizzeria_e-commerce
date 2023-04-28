@@ -1,16 +1,33 @@
-.root {
+.pageList {
   display: flex;
   justify-content: center;
   gap: 10px;
 
-  li {
+  .pageItem {
     padding: 10px;
     border: 1px solid #fe5f1e;
+    color: #fe5f1e;
     border-radius: 30px;
     cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
 
     &:hover {
       background-color: #fe5f1e;
+      color: white;
+    }
+  }
+
+  .active {
+    background-color: #fe5f1e;
+    color: white;
+    font-weight: bold;
+  }
+
+  .disabled {
+    &:hover {
+      background-color: white;
+      cursor: auto;
+      color: #fe5f1e;
     }
   }
 }
